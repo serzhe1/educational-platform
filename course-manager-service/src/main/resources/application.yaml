@@ -1,0 +1,9 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/course
+    username: postgres
+    password: psql123
