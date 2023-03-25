@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class TaskService extends AbstractService<Task, TaskRepository> {
     public TaskService(TaskRepository repository) {
         super(repository);
+        this.notFoundMassage = "task is unfounded with id: ";
     }
 
     public Task save(Task task) {

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class TheoryPartService extends AbstractService<TheoryPart, TheoryPartRepository> {
     public TheoryPartService(TheoryPartRepository repository) {
         super(repository);
+        this.notFoundMassage = "theory is unfounded with id: ";
     }
 
     public TheoryPart save(TheoryPart part) {

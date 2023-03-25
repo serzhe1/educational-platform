@@ -9,6 +9,7 @@ import java.util.List;
 
 public abstract class AbstractService <E extends AbstractEntity, R extends CommonRepository<E>> {
     protected final R repository;
+    protected String notFoundMassage = "entity is unfounded with id: ";
 
     @Autowired
     public AbstractService(R repository) {
@@ -19,7 +20,7 @@ public abstract class AbstractService <E extends AbstractEntity, R extends Commo
     }
 
     public E getById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("entity is unfounded with id: " + id));
+        return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(notFoundMassage + id));
     }
 
 }
