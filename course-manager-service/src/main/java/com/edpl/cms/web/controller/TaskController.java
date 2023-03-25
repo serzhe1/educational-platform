@@ -1,7 +1,7 @@
-package com.edpl.coursemanagerservice.web.controller;
+package com.edpl.cms.web.controller;
 
-import com.edpl.coursemanagerservice.persistent.model.impls.Task;
-import com.edpl.coursemanagerservice.persistent.service.impls.TaskService;
+import com.edpl.cms.persistent.model.impls.Task;
+import com.edpl.cms.persistent.service.impls.TaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

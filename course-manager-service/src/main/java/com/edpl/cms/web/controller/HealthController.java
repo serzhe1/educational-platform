@@ -1,4 +1,4 @@
-package com.edpl.coursemanagerservice.web.controller;
+package com.edpl.cms.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

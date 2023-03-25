@@ -1,4 +1,4 @@
-package com.edpl.coursemanagerservice.persistent.model;
+package com.edpl.cms.persistent.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

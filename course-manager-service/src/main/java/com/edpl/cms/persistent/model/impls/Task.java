@@ -1,6 +1,6 @@
-package com.edpl.coursemanagerservice.persistent.model.impls;
+package com.edpl.cms.persistent.model.impls;
 
-import com.edpl.coursemanagerservice.persistent.model.AbstractEntity;
+import com.edpl.cms.persistent.model.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

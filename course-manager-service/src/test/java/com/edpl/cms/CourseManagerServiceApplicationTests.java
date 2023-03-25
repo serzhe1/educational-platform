@@ -1,4 +1,4 @@
-package com.edpl.coursemanagerservice;
+package com.edpl.cms;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

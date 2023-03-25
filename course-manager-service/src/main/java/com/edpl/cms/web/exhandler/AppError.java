@@ -1,4 +1,4 @@
-package com.edpl.coursemanagerservice.web.exhandler;
+package com.edpl.cms.web.exhandler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

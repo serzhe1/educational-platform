@@ -1,8 +1,8 @@
-package com.edpl.coursemanagerservice.persistent.service;
+package com.edpl.cms.persistent.service;
 
-import com.edpl.coursemanagerservice.persistent.model.AbstractEntity;
-import com.edpl.coursemanagerservice.persistent.repository.CommonRepository;
-import com.edpl.coursemanagerservice.web.exhandler.exceptions.ResourceNotFoundException;
+import com.edpl.cms.persistent.model.AbstractEntity;
+import com.edpl.cms.persistent.repository.CommonRepository;
+import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

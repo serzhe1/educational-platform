@@ -1,8 +1,8 @@
-package com.edpl.coursemanagerservice.persistent.service.impls;
+package com.edpl.cms.persistent.service.impls;
 
-import com.edpl.coursemanagerservice.persistent.model.impls.Task;
-import com.edpl.coursemanagerservice.persistent.repository.impls.TaskRepository;
-import com.edpl.coursemanagerservice.persistent.service.AbstractService;
+import com.edpl.cms.persistent.model.impls.Task;
+import com.edpl.cms.persistent.repository.impls.TaskRepository;
+import com.edpl.cms.persistent.service.AbstractService;
 import org.springframework.stereotype.Service;
 
 @Service

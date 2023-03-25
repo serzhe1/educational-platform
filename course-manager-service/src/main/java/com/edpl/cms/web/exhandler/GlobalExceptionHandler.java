@@ -1,6 +1,6 @@
-package com.edpl.coursemanagerservice.web.exhandler;
+package com.edpl.cms.web.exhandler;
 
-import com.edpl.coursemanagerservice.web.exhandler.exceptions.ResourceNotFoundException;
+import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
