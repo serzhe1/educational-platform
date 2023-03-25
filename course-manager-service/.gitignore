@@ -46,3 +46,4 @@ mvn-memo-plugin.log
 *.mvn/timing.properties
 mvnw
 mvnw.cmd
+.mvn/
