@@ -1,5 +1,7 @@
 server:
   port: 8090
+  servlet:
+    context-path: /api/course-manager
 
 spring:
   datasource:
@@ -7,3 +9,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/course
     username: postgres
     password: psql123
+  jpa:
+    hibernate:
+      ddl-auto: update
