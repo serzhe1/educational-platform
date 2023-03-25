@@ -24,7 +24,7 @@ public class TheoryPartController {
     }
 
     @PostMapping
-    public TheoryPart getById(@RequestBody TheoryPart part) {
+    public TheoryPart saveOrUpdate(@RequestBody TheoryPart part) {
         return service.save(part);
     }
 }

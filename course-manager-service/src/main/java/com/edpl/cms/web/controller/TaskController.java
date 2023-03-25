@@ -25,7 +25,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task getById(@RequestBody Task task) {
+    public Task saveOrUpdate(@RequestBody Task task) {
         return service.save(task);
     }
 }
