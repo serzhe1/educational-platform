@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.edpl</groupId>
     <artifactId>eureka-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>eureka-server</name>
     <description>eureka-server</description>
     <properties>
