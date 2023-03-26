@@ -1,14 +1,12 @@
 server:
   port: 8090
-  servlet:
-    context-path: /course-manager
 
 spring:
   application:
-    name: course-manager-service
+    name: course-manager
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/course
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: psql123
   jpa:
