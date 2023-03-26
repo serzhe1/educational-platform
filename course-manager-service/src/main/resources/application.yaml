@@ -1,9 +1,11 @@
 server:
   port: 8090
   servlet:
-    context-path: /api/course-manager
+    context-path: /course-manager
 
 spring:
+  application:
+    name: course-manager-service
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/course
@@ -12,3 +14,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8091/eureka

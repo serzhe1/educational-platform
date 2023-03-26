@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class HealthController {
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<String> health () {
         return ResponseEntity.ok("ALIVE");
     }
