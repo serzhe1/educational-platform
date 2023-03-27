@@ -11,8 +11,10 @@ spring:
     password: psql123
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 eureka:
   client:
+#    register-with-eureka: false
+#    fetch-registry: false
     service-url:
       defaultZone: http://localhost:8091/eureka
