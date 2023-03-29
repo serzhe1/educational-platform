@@ -4,16 +4,16 @@ import com.edpl.cms.persistent.model.AbstractEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "tasks")
 @Data
 public class Task extends AbstractEntity {
-    private String text;
-    private String answer;
+    private String description;
+
+    private int theoryModuleId;
 }
 
 
