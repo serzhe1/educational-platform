@@ -6,7 +6,7 @@ spring:
     name: course-manager
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:2345/postgres
     username: postgres
     password: psql123
   jpa:
@@ -14,7 +14,7 @@ spring:
       ddl-auto: none
 eureka:
   client:
-#    register-with-eureka: false
-#    fetch-registry: false
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultZone: http://localhost:8091/eureka
