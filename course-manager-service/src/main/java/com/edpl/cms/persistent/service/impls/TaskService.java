@@ -15,8 +15,6 @@ public class TaskService extends AbstractService<Task, TaskRepository> {
     public Task save(Task task) {
         if (task.getId() != null) {
             Task updatedTask = getById(task.getId());
-            updatedTask.setAnswer(task.getAnswer());
-            updatedTask.setText(updatedTask.getText());
             return repository.save(updatedTask);
         }
         return repository.save(task);
