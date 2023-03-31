@@ -14,6 +14,9 @@ public class Task extends AbstractEntity {
     private String description;
 
     private int theoryModuleId;
+    @ManyToOne
+    @JoinColumn(name = "theory_module_id")
+    private TheoryModule theoryModule;
 }
 
 

@@ -2,21 +2,19 @@ package com.edpl.cms.persistent.model.impls;
 
 import com.edpl.cms.persistent.model.AbstractEntity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "theory_parts")
+@Table(name = "theory_module")
 @Data
-public class TheoryPart extends AbstractEntity {
-    private String title;
-    private String content;
+public class TheoryModule extends AbstractEntity {
+    private String name;
+    private String description;
     @ManyToOne
-    @JoinColumn(name = "theory_module_id")
-    private TheoryModule theoryModule;
+    @JoinColumn(name = "course_id")
+    private Course course;
 }

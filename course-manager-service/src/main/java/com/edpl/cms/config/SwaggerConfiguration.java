@@ -1,4 +1,4 @@
-package com.edpl.coursemanagerservice.configuration;
+package com.edpl.cms.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;
