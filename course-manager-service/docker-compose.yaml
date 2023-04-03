@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+#  eureka-server:
+#    image: serzhe1/eureka-server:1.0
+#    ports:
+#      - "8091:8091"
+#  api-gateway:
+#    image: serzhe1/api-gateway:1.0
+#    environment:
+#      - EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE=http://eureka-server:8091/eureka
+#    ports:
+#      - "8092:8092"
+#    depends_on:
+#      - eureka-server
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: psql123
+      POSTGRES_DB: postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "2345:5432"
+#  cms:
+#    build:
+#      context: ./
+#    depends_on:
+#      - eureka-server
+#      - db
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=psql123
+#      - EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE=http://eureka-server:8091/eureka
+#    ports:
+#      - "8090:8090"
