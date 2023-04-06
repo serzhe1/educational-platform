@@ -28,4 +28,10 @@ public class TaskController {
     public Task saveOrUpdate(@RequestBody Task task) {
         return service.save(task);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        service.deleteById(id);
+    }
+
 }

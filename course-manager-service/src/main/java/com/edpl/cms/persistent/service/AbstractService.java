@@ -23,4 +23,8 @@ public abstract class AbstractService <E extends AbstractEntity, R extends Commo
         return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(notFoundMassage + id));
     }
 
+    public void deleteById(Long id) {
+        repository.deleteById(id);
+    }
+
 }

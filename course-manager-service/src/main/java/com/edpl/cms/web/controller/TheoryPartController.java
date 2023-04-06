@@ -27,4 +27,9 @@ public class TheoryPartController {
     public TheoryPart saveOrUpdate(@RequestBody TheoryPart part) {
         return service.save(part);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        service.deleteById(id);
+    }
 }

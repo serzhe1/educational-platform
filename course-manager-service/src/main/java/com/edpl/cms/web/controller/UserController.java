@@ -1,7 +1,6 @@
 package com.edpl.cms.web.controller;
 
 
-import com.edpl.cms.persistent.model.impls.Task;
 import com.edpl.cms.persistent.model.impls.User;
 import com.edpl.cms.persistent.service.impls.UserService;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +27,10 @@ public class UserController {
     @PostMapping
     public User saveOrUpdate(@RequestBody User user) {
         return service.save(user);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        service.deleteById(id);
     }
 }
