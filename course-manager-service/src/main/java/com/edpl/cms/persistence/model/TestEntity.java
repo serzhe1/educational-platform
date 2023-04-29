@@ -13,6 +13,7 @@ import java.util.Set;
 public class TestEntity {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

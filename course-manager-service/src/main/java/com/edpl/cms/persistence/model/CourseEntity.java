@@ -15,6 +15,7 @@ import java.util.Set;
 public class CourseEntity {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "description")
