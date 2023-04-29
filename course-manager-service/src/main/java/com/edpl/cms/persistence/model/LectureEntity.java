@@ -10,17 +10,17 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 public class LectureEntity {
-	@Id
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "name")
-	private String name;
+    @Column(name = "name")
+    private String name;
 
-	@Column(name = "content")
-	private String content;
+    @Column(name = "content")
+    private String content;
 
-	@ManyToOne
-	@JoinColumn(name = "module_id")
-	private ModuleEntity module;
+    @ManyToOne
+    @JoinColumn(name = "module_id")
+    private ModuleEntity module;
 }

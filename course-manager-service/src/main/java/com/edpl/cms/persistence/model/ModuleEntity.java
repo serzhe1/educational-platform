@@ -11,23 +11,23 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class ModuleEntity {
-	@Id
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "name")
-	private String name;
+    @Column(name = "name")
+    private String name;
 
-	@Column(name = "description")
-	private String description;
+    @Column(name = "description")
+    private String description;
 
-	@ManyToOne
-	@JoinColumn(name = "course_id")
-	private CourseEntity course;
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private CourseEntity course;
 
-	@OneToMany(mappedBy = "module")
-	private Set<LectureEntity> lectures;
+    @OneToMany(mappedBy = "module")
+    private Set<LectureEntity> lectures;
 
-	@OneToMany(mappedBy = "module")
-	private Set<TestEntity> tests;
+    @OneToMany(mappedBy = "module")
+    private Set<TestEntity> tests;
 }

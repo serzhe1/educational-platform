@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 public class RoleEntity {
-	@Id
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "role")
-	@Enumerated(EnumType.STRING)
-	private RoleEnum role;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private RoleEnum role;
 }

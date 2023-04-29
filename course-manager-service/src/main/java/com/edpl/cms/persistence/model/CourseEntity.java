@@ -13,26 +13,26 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class CourseEntity {
-	@Id
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "description")
-	private String description;
+    @Column(name = "description")
+    private String description;
 
-	@Column(name = "format")
-	private String format;
+    @Column(name = "format")
+    private String format;
 
-	@Column(name = "requirements")
-	private String requirements;
+    @Column(name = "requirements")
+    private String requirements;
 
-	@Column(name = "competencies")
-	private String competencies;
+    @Column(name = "competencies")
+    private String competencies;
 
-	@ManyToOne
-	@JoinColumn(name = "owner_id")
-	private UserEntity owner;
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private UserEntity owner;
 
-	@OneToMany(mappedBy = "course")
-	private Set<ModuleEntity> modules;
+    @OneToMany(mappedBy = "course")
+    private Set<ModuleEntity> modules;
 }
