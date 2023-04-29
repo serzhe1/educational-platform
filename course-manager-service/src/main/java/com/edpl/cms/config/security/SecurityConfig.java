@@ -18,6 +18,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 public class SecurityConfig {
     private final MyBasicAuthenticationEntryPoint authenticationEntryPoint;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/swagger-ui/**",
+            "/v3/api-docs/**"
+    };
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
@@ -29,11 +34,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/securityNone")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+        http
+                .csrf().disable()
+                .authorizeHttpRequests()
+                .antMatchers(AUTH_WHITELIST).permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .httpBasic()
                 .authenticationEntryPoint(authenticationEntryPoint);

@@ -13,6 +13,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
 eureka:
   client:
     register-with-eureka: false
