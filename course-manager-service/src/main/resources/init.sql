@@ -5,7 +5,11 @@ create table courses
     description  varchar,
     format       varchar,
     requirements varchar,
-    competencies varchar
+    competencies varchar,
+    owner_id     bigint,
+    constraint user_fk
+        foreign key (owner_id)
+            references users (id)
 );
 
 drop table if exists modules;
@@ -86,7 +90,7 @@ create table user_roles
 drop table if exists user_courses;
 create table user_courses
 (
-    user_id bigint,
+    user_id   bigint,
     course_id bigint,
     primary key (user_id, course_id),
     constraint user_fk
