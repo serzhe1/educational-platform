@@ -6,7 +6,6 @@ spring:
     name: course-manager
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:2345/postgres
     username: postgres
     password: psql123
   jpa:
