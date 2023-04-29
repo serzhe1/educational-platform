@@ -10,6 +10,7 @@ import java.util.Set;
 @Table(name = "users")
 @Data
 @NoArgsConstructor
+
 public class UserEntity {
 	@Id
 	@Column(name = "id")
