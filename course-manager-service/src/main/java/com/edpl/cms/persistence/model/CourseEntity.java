@@ -29,6 +29,10 @@ public class CourseEntity {
 	@Column(name = "competencies")
 	private String competencies;
 
+	@ManyToOne
+	@JoinColumn(name = "owner_id")
+	private UserEntity owner;
+
 	@OneToMany(mappedBy = "course")
 	private Set<ModuleEntity> modules;
 }
