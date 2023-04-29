@@ -28,6 +28,7 @@ drop table if exists lectures;
 create table lectures
 (
     id        serial primary key,
+    name varchar,
     content   varchar,
     module_id bigint,
     constraint module_fk
