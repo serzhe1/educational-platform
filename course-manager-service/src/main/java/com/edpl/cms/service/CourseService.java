@@ -52,6 +52,7 @@ public class CourseService {
 											  .orElseThrow(() -> new ResourceNotFoundException(
 												  String.format("Course with id=%d not found", courseDto.getId())));
 
+		course.setName(courseDto.getName());
 		course.setCompetencies(courseDto.getCompetencies());
 		course.setFormat(courseDto.getFormat());
 		course.setDescription(courseDto.getDescription());
