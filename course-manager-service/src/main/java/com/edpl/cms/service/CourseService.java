@@ -3,7 +3,6 @@ package com.edpl.cms.service;
 import com.edpl.cms.persistence.model.CourseEntity;
 import com.edpl.cms.persistence.repository.CourseRepository;
 import com.edpl.cms.web.dto.CourseDto;
-import com.edpl.cms.web.exhandler.exceptions.ApplicationBadRequest;
 import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -61,5 +60,10 @@ public class CourseService {
 		courseRepository.save(course);
 
 		return courseDto;
+	}
+
+	@Transactional
+	public void deleteById(Long id) {
+		courseRepository.deleteById(id);
 	}
 }

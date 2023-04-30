@@ -52,5 +52,10 @@ public class CourseController {
 		return ResponseEntity.ok().body(dto);
 	}
 
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable("id") Long courseId) {
+		courseService.deleteById(courseId);
 
+		return ResponseEntity.noContent().build();
+	}
 }
