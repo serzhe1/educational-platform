@@ -23,7 +23,8 @@ public class ModuleEntity extends AbstractEntity<Long> {
     @Column(name = "course_id")
     private Long courseId;
 
-    @OneToMany(mappedBy = "module")
+    @OneToMany
+    @JoinColumn(name = "module_id", referencedColumnName = "id")
     private Set<LectureEntity> lectures;
 
     @OneToMany
