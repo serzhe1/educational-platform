@@ -1,7 +1,7 @@
 package com.edpl.cms.persistence.model;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -9,15 +9,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "courses")
-@Tag(name = "course")
 @Data
 @NoArgsConstructor
-public class CourseEntity {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@EqualsAndHashCode(callSuper = true)
+public class CourseEntity extends AbstractEntity<Long> {
     @Column(name = "description")
     private String description;
 

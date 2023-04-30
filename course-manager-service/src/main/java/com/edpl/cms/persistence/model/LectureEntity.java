@@ -1,6 +1,7 @@
 package com.edpl.cms.persistence.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -9,12 +10,8 @@ import javax.persistence.*;
 @Table(name = "lectures")
 @Data
 @NoArgsConstructor
-public class LectureEntity {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@EqualsAndHashCode(callSuper = true)
+public class LectureEntity extends AbstractEntity<Long> {
     @Column(name = "name")
     private String name;
 

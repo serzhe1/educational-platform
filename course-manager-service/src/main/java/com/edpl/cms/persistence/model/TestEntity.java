@@ -1,6 +1,7 @@
 package com.edpl.cms.persistence.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,12 +11,8 @@ import java.util.Set;
 @Table(name = "tests")
 @Data
 @NoArgsConstructor
-public class TestEntity {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+@EqualsAndHashCode(callSuper = true)
+public class TestEntity extends AbstractEntity<Long> {
     @ManyToOne
     @JoinColumn(name = "module_id")
     private ModuleEntity module;
