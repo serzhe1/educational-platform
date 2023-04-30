@@ -13,10 +13,15 @@ import java.util.Set;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class TestEntity extends AbstractEntity<Long> {
+
+    @Column(name = "question")
+    private String question;
+
     @ManyToOne
     @JoinColumn(name = "module_id")
     private ModuleEntity module;
 
-    @OneToMany(mappedBy = "test")
+    @OneToMany
+    @JoinColumn(name = "test_id")
     private Set<TestAnswersEntity> testAnswers;
 }

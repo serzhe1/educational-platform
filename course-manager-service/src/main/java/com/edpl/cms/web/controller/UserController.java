@@ -3,6 +3,7 @@ package com.edpl.cms.web.controller;
 import com.edpl.cms.service.UserService;
 import com.edpl.cms.web.dto.UserDto;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "basic-auth")
 public class UserController {
     private final UserService userService;
 

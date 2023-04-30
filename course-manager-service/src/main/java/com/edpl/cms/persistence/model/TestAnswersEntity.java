@@ -17,7 +17,4 @@ public class TestAnswersEntity extends AbstractEntity<Long> {
 
     @Column(name = "is_right")
     private boolean isRight;
-
-    @ManyToOne
-    private TestEntity test;
 }

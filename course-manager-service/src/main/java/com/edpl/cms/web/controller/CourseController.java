@@ -2,6 +2,7 @@ package com.edpl.cms.web.controller;
 
 import com.edpl.cms.service.CourseService;
 import com.edpl.cms.web.dto.CourseDto;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/courses")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "basic-auth")
 public class CourseController {
 	private final CourseService courseService;
 
@@ -29,10 +31,16 @@ public class CourseController {
 		return ResponseEntity.ok(courseDto);
 	}
 
+	// TODO нужно как то указывать owner
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody CourseDto courseDto) {
 		CourseDto dto = courseService.save(courseDto);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 	}
+
+//	@PatchMapping("/{courseId}")
+//	public ResponseEntity<CourseDto> update(@RequestBody CourseDto courseDto) {
+//		CourseDto
+//	}
 }
