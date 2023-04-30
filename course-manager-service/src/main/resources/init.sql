@@ -2,6 +2,7 @@ drop table if exists courses;
 create table courses
 (
     id           serial primary key,
+    name         varchar,
     description  varchar,
     format       varchar,
     requirements varchar,
@@ -28,7 +29,7 @@ drop table if exists lectures;
 create table lectures
 (
     id        serial primary key,
-    name varchar,
+    name      varchar,
     content   varchar,
     module_id bigint,
     constraint module_fk

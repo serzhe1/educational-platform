@@ -17,17 +17,11 @@ public class TestAnswerService {
     private final TestAnswerRepository testAnswerRepository;
     private final ModelMapper modelMapper;
 
+    //todo course service
     public TestAnswerDto save(TestDto request) {
-        //todo bad request
         TestAnswersEntity entity = modelMapper.map(request, TestAnswersEntity.class);
         entity = testAnswerRepository.save(entity);
         return modelMapper.map(entity, TestAnswerDto.class);
-    }
-
-    public List<TestAnswerDto> getAll() {
-        return testAnswerRepository.findAll().stream()
-                .map(t -> modelMapper.map(t, TestAnswerDto.class))
-                .toList();
     }
 
     public TestAnswerDto getById(Long id) {

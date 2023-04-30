@@ -20,15 +20,14 @@ public class TestService {
 
     @Transactional
     public TestDto save(TestDto request) {
-        //todo bad request
         TestEntity entity = modelMapper.map(request, TestEntity.class);
         entity = testRepository.save(entity);
         return modelMapper.map(entity, TestDto.class);
     }
 
     @Transactional(readOnly = true)
-    public List<TestDto> getAll() {
-        return testRepository.findAll().stream()
+    public List<TestDto> getAllByModule(Long module) {
+        return testRepository.findAllByModuleId(module).stream()
                 .map(t -> modelMapper.map(t, TestDto.class))
                 .toList();
     }
@@ -38,12 +37,6 @@ public class TestService {
         TestEntity entity = testRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Test is not found with id: " + id));
-        List<TestAnswerDto> answers = entity.getTestAnswers().stream()
-                .map(e -> modelMapper.map(e, TestAnswerDto.class))
-                .toList();
-
-        TestDto response = modelMapper.map(entity, TestDto.class);
-        response.setAnswers(answers);
-        return response;
+        return modelMapper.map(entity, TestDto.class);
     }
 }

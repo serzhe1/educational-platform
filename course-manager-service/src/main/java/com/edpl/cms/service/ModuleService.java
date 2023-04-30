@@ -18,7 +18,6 @@ public class ModuleService {
     private final ModuleRepository moduleRepository;
     private final ModelMapper modelMapper;
 
-    private final CourseService courseService;
 
     @Transactional
     public ModuleDto save(ModuleDto dto) {

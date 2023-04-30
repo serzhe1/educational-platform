@@ -1,7 +1,11 @@
 package com.edpl.cms.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 
 @Data
@@ -12,4 +16,5 @@ public class UserDto {
     private Long id;
     private String username;
     private String fullName;
+    private Set<CourseDto> courses;
 }

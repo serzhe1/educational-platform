@@ -28,9 +28,8 @@ public class CourseEntity extends AbstractEntity<Long> {
     @Column(name = "competencies")
     private String competencies;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private UserEntity owner;
+    @Column(name = "owner_id")
+    private Long ownerId;
 
     @OneToMany
     @JoinColumn(name = "course_id")
