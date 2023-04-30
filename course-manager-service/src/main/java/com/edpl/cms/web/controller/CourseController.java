@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/courses")
@@ -18,10 +20,16 @@ public class CourseController {
 	private final CourseService courseService;
 
 	@GetMapping
-	public ResponseEntity<List<CourseDto>> getAllCourses() {
-		List<CourseDto> courseEntities = courseService.findAll();
+	public ResponseEntity<List<CourseDto>> findAll(@RequestParam Optional<String> namePattern) {
+		List<CourseDto> resultDtos;
 
-		return ResponseEntity.ok(courseEntities);
+		if (namePattern.isPresent()) {
+			resultDtos =  courseService.findAllByName(namePattern.get());
+		} else {
+			resultDtos = courseService.findAll();
+		}
+
+		return ResponseEntity.ok().body(resultDtos);
 	}
 
 	@GetMapping("/{courseId}")

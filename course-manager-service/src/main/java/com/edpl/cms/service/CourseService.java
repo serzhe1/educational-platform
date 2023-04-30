@@ -67,4 +67,13 @@ public class CourseService {
 	public void deleteById(Long id) {
 		courseRepository.deleteById(id);
 	}
+
+	@Transactional(readOnly = true)
+	public List<CourseDto> findAllByName(String namePattern) {
+		List<CourseEntity> coursesByName = courseRepository.findAllByNameContaining(namePattern);
+
+		return coursesByName.stream()
+							.map(courseEntity -> modelMapper.map(courseEntity, CourseDto.class))
+							.toList();
+	}
 }
