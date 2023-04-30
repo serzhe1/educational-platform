@@ -5,6 +5,8 @@ import com.edpl.cms.web.dto.UserDto;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +19,33 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/me")
-    public UserDto getUser() {
-        return userService.getUser();
+    public ResponseEntity<UserDto> getUser() {
+        UserDto dto = userService.getUser();
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping
-    public List<UserDto> getAll() {
-        return userService.getAll();
+    public ResponseEntity<List<UserDto>> getAll() {
+        List<UserDto> users = userService.getAll();
+        return ResponseEntity.ok(users);
     }
 
     @PostMapping
-    public UserDto saveUser(@RequestBody UserDto userDto) {
-        return userService.save(userDto);
+    public ResponseEntity<?> saveUser(@RequestBody UserDto userDto) {
+        UserDto dto = userService.save(userDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
     @PatchMapping
-    public UserDto updateUser(@RequestBody UserDto userDto) {
-        return userService.update(userDto);
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
+       UserDto dto = userService.update(userDto);
+       return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable long id) {
         userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

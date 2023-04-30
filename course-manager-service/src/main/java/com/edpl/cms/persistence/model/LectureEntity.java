@@ -19,7 +19,5 @@ public class LectureEntity extends AbstractEntity<Long> {
     @Column(name = "content")
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "module_id")
-    private ModuleEntity module;
+    private Long moduleId;
 }

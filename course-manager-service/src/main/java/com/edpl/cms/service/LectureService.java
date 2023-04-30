@@ -19,7 +19,6 @@ public class LectureService {
 
     @Transactional(readOnly = true)
     public LectureDto getById(Long id) {
-
         LectureEntity entity = lectureRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Lecture is not found with id: " + id));
 
@@ -38,11 +37,33 @@ public class LectureService {
         LectureEntity entity = new LectureEntity();
         entity.setName(dto.getName());
         entity.setContent(dto.getContent());
-//        entity.setModule();
+        entity.setModuleId(dto.getModuleId());
 
-
+        entity = lectureRepository.save(entity);
 
         return modelMapper.map(entity, LectureDto.class);
     }
 
+    @Transactional
+    public LectureDto update(LectureDto dto) {
+        LectureEntity entity = lectureRepository
+                .findById(dto.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("Lecture not found with id: " + dto.getId()));
+
+        entity.setName(dto.getName());
+        entity.setContent(dto.getContent());
+
+        entity = lectureRepository.save(entity);
+
+        return modelMapper.map(entity, LectureDto.class);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        LectureEntity entity = lectureRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Lecture not found with id: " + id));
+
+        lectureRepository.deleteById(id);
+    }
 }
