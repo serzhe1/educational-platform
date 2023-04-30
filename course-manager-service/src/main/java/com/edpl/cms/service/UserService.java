@@ -23,6 +23,15 @@ public class UserService {
     private final ModelMapper modelMapper;
 
     @Transactional
+    public  UserEntity getUserEntity() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User is not found with name: " + username));
+
+    }
+
+    @Transactional
     public UserDto save(UserDto userDto) {
         if (userDto.getId() != null) {
             throw new ApplicationBadRequest("id should be null");
