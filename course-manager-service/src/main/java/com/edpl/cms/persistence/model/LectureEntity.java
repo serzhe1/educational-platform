@@ -19,5 +19,6 @@ public class LectureEntity extends AbstractEntity<Long> {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "module_id")
     private Long moduleId;
 }
