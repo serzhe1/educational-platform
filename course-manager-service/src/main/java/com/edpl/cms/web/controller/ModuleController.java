@@ -40,7 +40,7 @@ public class ModuleController {
     public ResponseEntity<ModuleDto> update(@RequestBody ModuleDto moduleDto) {
         ModuleDto dto = moduleService.update(moduleDto);
 
-        return ResponseEntity.ok(moduleDto);
+        return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping("/{id}")
