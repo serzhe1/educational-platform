@@ -1,6 +1,6 @@
 package com.edpl.cms.web.controller;
 
-import com.edpl.cms.services.CourseService;
+import com.edpl.cms.service.CourseService;
 import com.edpl.cms.web.dto.CourseDto;
 import com.edpl.cms.web.exhandler.AppError;
 import lombok.RequiredArgsConstructor;
