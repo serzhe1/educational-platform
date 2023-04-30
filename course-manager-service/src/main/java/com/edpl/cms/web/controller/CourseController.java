@@ -31,7 +31,6 @@ public class CourseController {
 		return ResponseEntity.ok(courseDto);
 	}
 
-	// TODO нужно как то указывать owner
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody CourseDto courseDto) {
 		CourseDto dto = courseService.save(courseDto);
@@ -39,8 +38,17 @@ public class CourseController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 	}
 
-//	@PatchMapping("/{courseId}")
-//	public ResponseEntity<CourseDto> update(@RequestBody CourseDto courseDto) {
-//		CourseDto
-//	}
+	@PatchMapping
+	public ResponseEntity<?> partialUpdate(@RequestBody CourseDto courseDto) {
+		courseService.update(courseDto);
+
+		return ResponseEntity.noContent().build();
+	}
+
+	@PutMapping
+	public ResponseEntity<?> fullUpdate(@RequestBody CourseDto courseDto) {
+		courseService.update(courseDto);
+
+		return ResponseEntity.noContent().build();
+	}
 }
