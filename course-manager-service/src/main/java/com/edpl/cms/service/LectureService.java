@@ -26,8 +26,8 @@ public class LectureService {
     }
 
     @Transactional(readOnly = true)
-    public List<LectureDto> getAll() {
-        List<LectureEntity> lectures = lectureRepository.findAll();
+    public List<LectureDto> getAllByModuleId(Long moduleId) {
+        List<LectureEntity> lectures = lectureRepository.findAllByModuleId(moduleId);
 
         return lectures.stream().map(l -> modelMapper.map(l, LectureDto.class)).toList();
     }
@@ -60,7 +60,7 @@ public class LectureService {
 
     @Transactional
     public void delete(Long id) {
-        LectureEntity entity = lectureRepository
+        lectureRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Lecture not found with id: " + id));
 
