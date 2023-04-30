@@ -12,6 +12,6 @@ import java.util.List;
 public class TestDto {
     private Long id;
     private String question;
-//    private List<TestAnswerDto> answers;
+    private List<TestAnswerDto> answers;
     private Long module;
 }

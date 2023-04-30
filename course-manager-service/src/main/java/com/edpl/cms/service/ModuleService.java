@@ -1,9 +1,7 @@
 package com.edpl.cms.service;
 
-import com.edpl.cms.persistence.model.CourseEntity;
 import com.edpl.cms.persistence.model.ModuleEntity;
 import com.edpl.cms.persistence.repository.ModuleRepository;
-import com.edpl.cms.web.dto.CourseDto;
 import com.edpl.cms.web.dto.ModuleDto;
 import com.edpl.cms.web.exhandler.exceptions.ApplicationBadRequest;
 import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
@@ -11,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
@@ -29,13 +26,10 @@ public class ModuleService {
             throw new ApplicationBadRequest("Module should be has course_id.");
         }
 
-        CourseDto courseDto = courseService.findById(dto.getCourseId());
-        CourseEntity courseEntity = modelMapper.map(courseDto, CourseEntity.class);
-
         ModuleEntity moduleEntity = new ModuleEntity();
         moduleEntity.setName(dto.getName());
         moduleEntity.setDescription(dto.getDescription());
-        moduleEntity.setCourse(courseEntity);
+        moduleEntity.setCourseId(dto.getCourseId());
 
         moduleEntity = moduleRepository.save(moduleEntity);
 

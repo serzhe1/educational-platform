@@ -20,13 +20,13 @@ public class ModuleEntity extends AbstractEntity<Long> {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private CourseEntity course;
+    @Column(name = "course_id")
+    private Long courseId;
 
     @OneToMany(mappedBy = "module")
     private Set<LectureEntity> lectures;
 
-    @OneToMany(mappedBy = "module")
+    @OneToMany
+    @JoinColumn(name = "module_id")
     private Set<TestEntity> tests;
 }

@@ -29,6 +29,7 @@ public class CourseEntity extends AbstractEntity<Long> {
     @JoinColumn(name = "owner_id")
     private UserEntity owner;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany
+    @JoinColumn(name = "course_id")
     private Set<ModuleEntity> modules;
 }

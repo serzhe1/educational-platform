@@ -43,7 +43,7 @@ public class TestService {
                 .toList();
 
         TestDto response = modelMapper.map(entity, TestDto.class);
-//        response.setAnswers(answers);
+        response.setAnswers(answers);
         return response;
     }
 }

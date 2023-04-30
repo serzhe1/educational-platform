@@ -17,11 +17,10 @@ public class TestEntity extends AbstractEntity<Long> {
     @Column(name = "question")
     private String question;
 
-    @ManyToOne
-    @JoinColumn(name = "module_id")
-    private ModuleEntity module;
+    @Column(name = "module_id")
+    private Long moduleId;
 
     @OneToMany
-    @JoinColumn(name = "test_id")
+    @JoinColumn(name = "test_id", referencedColumnName = "id")
     private Set<TestAnswersEntity> testAnswers;
 }
