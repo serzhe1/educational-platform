@@ -2,6 +2,7 @@ package com.edpl.cms.service;
 
 import com.edpl.cms.persistence.model.UserEntity;
 import com.edpl.cms.persistence.repository.UserRepository;
+import com.edpl.cms.web.dto.CourseDto;
 import com.edpl.cms.web.dto.UserDto;
 import com.edpl.cms.web.exhandler.exceptions.ApplicationBadRequest;
 import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
@@ -83,6 +84,14 @@ public class UserService {
         return users.stream().map(u -> modelMapper.map(u, UserDto.class)).toList();
     }
 
+    public List<CourseDto> getAllCoursesByUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        UserEntity userEntity = userRepository
+                .findByUsername(username)
+                .orElseThrow(() -> new ResourceNotFoundException("User is not found with name: " + username));
+        return userEntity.getCourses().stream().map(c -> modelMapper.map(c, CourseDto.class)).toList();
+    }
 }
 
 
