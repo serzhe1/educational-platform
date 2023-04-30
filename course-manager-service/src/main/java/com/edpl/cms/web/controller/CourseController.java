@@ -40,15 +40,17 @@ public class CourseController {
 
 	@PatchMapping
 	public ResponseEntity<?> partialUpdate(@RequestBody CourseDto courseDto) {
-		courseService.update(courseDto);
+		CourseDto dto = courseService.update(courseDto);
 
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(dto);
 	}
 
 	@PutMapping
 	public ResponseEntity<?> fullUpdate(@RequestBody CourseDto courseDto) {
-		courseService.update(courseDto);
+		CourseDto dto = courseService.update(courseDto);
 
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().body(dto);
 	}
+
+
 }
