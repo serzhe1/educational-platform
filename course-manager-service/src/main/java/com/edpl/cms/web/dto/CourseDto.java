@@ -1,10 +1,10 @@
 package com.edpl.cms.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,6 +12,19 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CourseDto {
+	@Data
+	public static class ModuleInfoDto {
+		private Long id;
+		private String name;
+		private List<LectureInfoDto> lectures;
+	}
+
+	@Data
+	public static class LectureInfoDto {
+		private Long id;
+		private String name;
+	}
+
 	private Long id;
 
 	private String name;
@@ -23,4 +36,6 @@ public class CourseDto {
 	private String requirements;
 
 	private String competencies;
+
+	private List<ModuleInfoDto> modules;
 }
