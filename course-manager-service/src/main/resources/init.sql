@@ -10,7 +10,7 @@ create table courses
     owner_id     bigint,
     constraint user_fk
         foreign key (owner_id)
-            references users (id)
+            references users (id) on delete cascade
 );
 
 drop table if exists modules;
@@ -22,7 +22,7 @@ create table modules
     course_id   bigint,
     constraint course_fk
         foreign key (course_id)
-            references courses (id)
+            references courses (id) on delete cascade
 );
 
 drop table if exists lectures;
@@ -34,7 +34,7 @@ create table lectures
     module_id bigint,
     constraint module_fk
         foreign key (module_id)
-            references modules (id)
+            references modules (id) on delete cascade
 );
 
 drop table if exists tests;
@@ -45,7 +45,7 @@ create table tests
     module_id bigint,
     constraint module_fk
         foreign key (module_id)
-            references modules (id)
+            references modules (id) on delete cascade
 );
 
 drop table if exists test_answers;
@@ -57,7 +57,7 @@ create table test_answers
     test_id  bigint,
     constraint test_id
         foreign key (test_id)
-            references tests (id)
+            references tests (id) on delete cascade
 );
 
 drop table if exists users;
@@ -83,10 +83,10 @@ create table user_roles
     primary key (user_id, role_id),
     constraint user_fk
         foreign key (user_id)
-            references users (id),
+            references users (id) on delete cascade,
     constraint role_fk
         foreign key (role_id)
-            references roles (id)
+            references roles (id) on delete cascade
 );
 
 drop table if exists user_courses;
@@ -97,8 +97,8 @@ create table user_courses
     primary key (user_id, course_id),
     constraint user_fk
         foreign key (user_id)
-            references users (id),
+            references users (id) on delete cascade,
     constraint course_fk
         foreign key (course_id)
-            references courses (id)
+            references courses (id) on delete cascade
 )
