@@ -10,6 +10,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: psql123
+    url: jdbc:postgresql://192.168.242.104:2345/postgres
   jpa:
     hibernate:
       ddl-auto: none

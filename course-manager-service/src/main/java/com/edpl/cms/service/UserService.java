@@ -89,6 +89,7 @@ public class UserService {
         return users.stream().map(u -> modelMapper.map(u, UserDto.class)).toList();
     }
 
+    @Transactional
     public List<CourseDto> getAllCoursesByUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
@@ -96,6 +97,14 @@ public class UserService {
                 .findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User is not found with name: " + username));
         return userEntity.getCourses().stream().map(c -> modelMapper.map(c, CourseDto.class)).toList();
+    }
+
+    @Transactional
+    public UserDto getUserById(Long id) {
+        UserEntity entity = userRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with id" + id));
+        return modelMapper.map(entity, UserDto.class);
     }
 }
 

@@ -2,6 +2,7 @@ package com.edpl.cms.web.controller;
 
 import com.edpl.cms.service.AdminService;
 import com.edpl.cms.web.dto.CourseDto;
+import com.edpl.cms.web.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,12 @@ public class AdminController {
     public ResponseEntity<Void> deleteModuleById(@PathVariable Long id) {
         adminService.deleteModuleById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // Удаление курса у пользователя
+    @PatchMapping("/users/{userId}/courses/{coursesId}")
+    public ResponseEntity<UserDto> deleteCourseFromUser(@PathVariable Long userId, @PathVariable Long coursesId) {
+        UserDto user = adminService.deleteCourseFromUser(userId, coursesId);
+        return ResponseEntity.ok(user);
     }
 }
