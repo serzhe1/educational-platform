@@ -45,7 +45,7 @@ public class ModuleController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        moduleService.delete(id);
+        moduleService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }
