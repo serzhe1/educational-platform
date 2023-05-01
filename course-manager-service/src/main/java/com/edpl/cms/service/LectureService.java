@@ -59,7 +59,7 @@ public class LectureService {
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         lectureRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Lecture not found with id: " + id));

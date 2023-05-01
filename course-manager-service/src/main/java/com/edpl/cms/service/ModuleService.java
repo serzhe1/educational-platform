@@ -62,7 +62,7 @@ public class ModuleService {
     }
 
     @Transactional
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         ModuleEntity moduleEntity = moduleRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Module not found with id: " + id));
 
