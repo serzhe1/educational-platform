@@ -17,4 +17,5 @@ public class UserDto {
     private String username;
     private String fullName;
     private Set<CourseDto> courses;
+    private Set<TestAnswerDto> answers;
 }

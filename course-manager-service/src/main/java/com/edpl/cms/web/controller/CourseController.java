@@ -2,13 +2,13 @@ package com.edpl.cms.web.controller;
 
 import com.edpl.cms.service.CourseService;
 import com.edpl.cms.web.dto.CourseDto;
+import com.edpl.cms.web.dto.CourseInfoDto;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +20,8 @@ public class CourseController {
 	private final CourseService courseService;
 
 	@GetMapping
-	public ResponseEntity<List<CourseDto>> findAll(@RequestParam Optional<String> namePattern) {
-		List<CourseDto> resultDtos;
+	public ResponseEntity<List<CourseInfoDto>> findAll(@RequestParam Optional<String> namePattern) {
+		List<CourseInfoDto> resultDtos;
 
 		if (namePattern.isPresent()) {
 			resultDtos =  courseService.findAllByName(namePattern.get());

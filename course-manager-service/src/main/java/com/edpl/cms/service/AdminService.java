@@ -1,6 +1,7 @@
 package com.edpl.cms.service;
 
 import com.edpl.cms.web.dto.CourseDto;
+import com.edpl.cms.web.dto.CourseInfoDto;
 import com.edpl.cms.web.dto.UserDto;
 import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class AdminService {
     private final UserService userService;
 
     @Transactional(readOnly = true)
-    public List<CourseDto> getAllCourses() {
+    public List<CourseInfoDto> getAllCourses() {
         return courseService.findAll();
     }
 

@@ -28,5 +28,12 @@ public class UserEntity extends AbstractEntity<Long> {
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Set<CourseEntity> courses;
 
+    @ManyToMany
+    @JoinTable(name = "student_answers",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "answer_id")
+    )
+    private Set<TestAnswersEntity> answers;
+
     private String fullName;
 }

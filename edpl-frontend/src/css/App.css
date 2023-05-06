@@ -1,0 +1,22 @@
+.container {
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Отступ сверху и снизу - автоматически, слева и справа - автоматически (центрирование по горизонтали) */
+  }
+
+
+  .layout {
+    min-height: 100vh;
+  }
+  
+  .logo {
+    height: 31px;
+    margin: 16px 24px 16px 0;
+    float: left;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .site-layout-content {
+    min-height: 280px;
+    padding: 24px;
+    background: #fff;
+  }

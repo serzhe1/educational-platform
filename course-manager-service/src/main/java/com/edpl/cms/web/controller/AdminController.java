@@ -2,6 +2,7 @@ package com.edpl.cms.web.controller;
 
 import com.edpl.cms.service.AdminService;
 import com.edpl.cms.web.dto.CourseDto;
+import com.edpl.cms.web.dto.CourseInfoDto;
 import com.edpl.cms.web.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class AdminController {
     private final AdminService adminService;
 
     @GetMapping("/courses")
-    public ResponseEntity<List<CourseDto>> getAllCourses() {
+    public ResponseEntity<List<CourseInfoDto>> getAllCourses() {
         return ResponseEntity.ok(adminService.getAllCourses());
     }
 

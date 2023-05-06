@@ -8,13 +8,13 @@ import io.swagger.v3.oas.models.info.Info;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@OpenAPIDefinition
-@Configuration
-@SecurityScheme(
-		name = "basic-auth",
-		type = SecuritySchemeType.HTTP,
-		scheme = "basic"
-)
+//@OpenAPIDefinition
+//@Configuration
+//@SecurityScheme(
+//		name = "basic-auth",
+//		type = SecuritySchemeType.HTTP,
+//		scheme = "basic"
+//)
 public class SwaggerConfiguration {
 	@Bean
 	public OpenAPI baseOpenAPI() {

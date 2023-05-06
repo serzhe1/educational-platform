@@ -9,6 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+import java.util.List;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @EnableWebSecurity
@@ -29,10 +31,15 @@ public class DefaultSecurityConfig {
     @Bean
     UserDetailsService users() {
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("password")
+                .username("user")
+                .password("user")
                 .roles("USER")
                 .build();
+//        UserDetails owner = User.withDefaultPasswordEncoder()
+//                .username("owner")
+//                .password("owner")
+//                .roles("OWNER")
+//                .build();
         return new InMemoryUserDetailsManager(user);
     }
 

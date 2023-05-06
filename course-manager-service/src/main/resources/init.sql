@@ -101,4 +101,18 @@ create table user_courses
     constraint course_fk
         foreign key (course_id)
             references courses (id) on delete cascade
+);
+
+drop table if exists student_answers;
+create table student_answers
+(
+    student_id bigint,
+    answer_id  bigint,
+    primary key (student_id, answer_id),
+    constraint student_fk
+        foreign key (student_id)
+            references users (id) on delete cascade,
+    constraint answer_fk
+        foreign key (answer_id)
+            references test_answers (id) on delete cascade
 )

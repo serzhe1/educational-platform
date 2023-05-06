@@ -1,6 +1,7 @@
 package com.edpl.cms.service;
 
 import com.edpl.cms.persistence.model.CourseEntity;
+import com.edpl.cms.persistence.model.TestAnswersEntity;
 import com.edpl.cms.persistence.model.UserEntity;
 import com.edpl.cms.persistence.repository.UserRepository;
 import com.edpl.cms.web.dto.CourseDto;
@@ -62,6 +63,11 @@ public class UserService {
                 .map(c -> modelMapper.map(c, CourseEntity.class))
                 .collect(Collectors.toSet());
         entity.setCourses(courses);
+
+        Set<TestAnswersEntity> answers = userDto.getAnswers().stream()
+                .map(c -> modelMapper.map(c, TestAnswersEntity.class))
+                .collect(Collectors.toSet());
+        entity.setAnswers(answers);
         entity = userRepository.save(entity);
         return modelMapper.map(entity, UserDto.class);
     }

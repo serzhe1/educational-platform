@@ -18,4 +18,5 @@ public class ModuleDto {
     private String name;
     private String description;
     private Long courseId;
+    private Set<TestDto> tests;
 }
