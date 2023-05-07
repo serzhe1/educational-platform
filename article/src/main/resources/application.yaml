@@ -26,7 +26,7 @@ spring:
 spring:
   config:
     activate:
-      on-profile: dev
+      on-profile: deb
 logging:
   level:
     root: DEBUG
