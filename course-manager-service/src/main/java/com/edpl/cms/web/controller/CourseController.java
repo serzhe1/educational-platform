@@ -13,9 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("/course-service/courses")
 @RequiredArgsConstructor
-@SecurityRequirement(name = "basic-auth")
 public class CourseController {
 	private final CourseService courseService;
 

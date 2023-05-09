@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
-@SecurityRequirement(name = "basic-auth")
+@SecurityRequirement(name = "bearer-key")
 public class UserController {
     private final UserService userService;
 
