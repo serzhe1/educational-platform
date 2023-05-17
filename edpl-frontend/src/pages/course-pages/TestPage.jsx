@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Layout, Card, Button } from 'antd';
+import { Layout, Row, Col, Card, Button } from 'antd';
 
 const { Content } = Layout;
 
@@ -47,41 +47,47 @@ const TestPage = () => {
 
   return (
     <Layout>
-    <Content style={{ padding: '50px' }}>
-      <Card title={`Вопрос ${currentQuestionIndex + 1}`}>
-        <p>{currentQuestion.question}</p>
-        {currentQuestion.answers.map((answer, index) => (
-          <Button
-            key={index}
-            type={selectedAnswer === answer ? 'primary' : 'default'}
-            onClick={() => handleAnswerSelect(answer)}
-            style={{ margin: '10px' }}
-          >
-            {answer}
-          </Button>
-        ))}
-        {currentQuestionIndex < questions.length - 1 ? (
-          <Button
-            type="primary"
-            disabled={selectedAnswer === ''}
-            onClick={handleNextQuestion}
-            style={{ margin: '10px' }}
-          >
-            Далее
-          </Button>
-        ) : (
-          <Button
-            type="primary"
-            disabled={selectedAnswer === ''}
-            onClick={handleFinishTest}
-            style={{ margin: '10px' }}
-          >
-            Завершить
-          </Button>
-        )}
-      </Card>
-    </Content>
-  </Layout>
+      <Content style={{ padding: '50px' }}>
+        <Row gutter={[16, 16]}>
+          {questions.map((question, index) => (
+            <Col span={16} key={index}>
+              <Card title={`Вопрос ${index + 1}`}>
+                <p>{question.question}</p>
+                {question.answers.map((answer, answerIndex) => (
+                  <Button
+                    key={answerIndex}
+                    type={selectedAnswer === answer ? 'primary' : 'default'}
+                    onClick={() => handleAnswerSelect(answer)}
+                    style={{ margin: '10px' }}
+                  >
+                    {answer}
+                  </Button>
+                ))}
+                {currentQuestionIndex < questions.length - 1 ? (
+                  <Button
+                    type="primary"
+                    disabled={selectedAnswer === ''}
+                    onClick={handleNextQuestion}
+                    style={{ margin: '10px' }}
+                  >
+                    Далее
+                  </Button>
+                ) : (
+                  <Button
+                    type="primary"
+                    disabled={selectedAnswer === ''}
+                    onClick={handleFinishTest}
+                    style={{ margin: '10px' }}
+                  >
+                    Завершить
+                  </Button>
+                )}
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Content>
+    </Layout>
   );
 };
 

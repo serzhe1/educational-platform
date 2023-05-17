@@ -7,7 +7,7 @@ import {api} from '../api/courseController';
 
 
 const { Content, Footer } = Layout;
-const staticImage = "https://cdn.shopify.com/s/files/1/0745/0975/articles/gigachad_1024x1024.jpg?v=1667928905"
+const staticImage = "https://findstack.com/wp-content/uploads/2021/06/How-to-Create-an-Online-Course.png"
 
 const CoursesPage = () => {
     const [searchTerm, setSearchTerm] = useState("");

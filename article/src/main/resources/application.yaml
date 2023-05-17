@@ -2,9 +2,9 @@ server:
   port: 8094
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/serega
-    username: serega
-    password: serega
+    url: jdbc:postgresql://localhost:2345/article
+    username: postgres
+    password: psql123
   data:
     web:
       pageable:
@@ -16,6 +16,8 @@ spring:
   main:
     allow-circular-references: true
   jpa:
+    hibernate:
+      ddl-auto: update
     database: POSTGRESQL
     show-sql: false
     properties:
