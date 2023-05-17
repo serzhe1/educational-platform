@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class UserController extends AbstractControllerImpl<UsersEntity, UserServ
 
     @GetMapping("/get-user-articles")
     @Operation(summary = "Получить все статьи пользователя")
+    @RolesAllowed({"user"})
     public ResponseEntity<List<ArticlesEntity>> getUserArticles(@RequestParam Long userId) {
         return ResponseEntity.ok(service.getUserArticles(userId));
     }

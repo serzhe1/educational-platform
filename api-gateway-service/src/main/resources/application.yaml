@@ -4,10 +4,10 @@ spring:
       default-filters:
         - TokenRelay
       routes:
-        - id: product-resource-server
-          uri: http://localhost:9191
+        - id: article-service
+          uri: http://localhost:8091
           predicates:
-            - Path=/product/**
+            - Path=/article-service/**
   security:
     oauth2:
       client:

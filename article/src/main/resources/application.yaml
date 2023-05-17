@@ -1,6 +1,13 @@
 server:
-  port: 8094
+  port: 8091
+  servlet:
+    context-path: /article-service
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/certs
   datasource:
     url: jdbc:postgresql://localhost:2345/article
     username: postgres
