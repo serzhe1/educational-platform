@@ -31,6 +31,9 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
 ---
 spring:
   config:
