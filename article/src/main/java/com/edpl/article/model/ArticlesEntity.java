@@ -3,15 +3,13 @@ package com.edpl.article.model;
 import lombok.*;
 
 import javax.persistence.*;
-
-/**
- * @author ogbozoyan
- * @date 07.05.2023
- */
 @Data
 @Entity
-@Table(name = "articles", schema = "public", catalog = "serega")
-public class ArticlesEntity extends AbstractEntity{
+@Table(name = "articles", schema = "public")
+public class ArticlesEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Basic
     @Column(name = "name")
     private String name;
@@ -21,8 +19,9 @@ public class ArticlesEntity extends AbstractEntity{
     @Basic
     @Column(name = "content")
     private String content;
-    @ManyToOne
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    private UsersEntity ownerId;
+
+    @Basic
+    @Column
+    private String ownerUuid;
 
 }

@@ -1,18 +1,19 @@
 spring:
   cloud:
     gateway:
-      default-filters:
-        - TokenRelay
       routes:
         - id: article-service
           uri: http://localhost:8091
           predicates:
             - Path=/article-service/**
+          filters:
+            - TokenRelay
   security:
     oauth2:
       client:
         provider:
           my-keycloak-provider:
+            user-name-attribute: preferred_username
             issuer-uri: http://localhost:8555/realms/edpl
         registration:
           keycloak-spring-gateway-client:
@@ -28,8 +29,8 @@ logging:
   level:
     org:
       springframework:
-        security:
-          web: DEBUG
+        security: DEBUG
+
 server:
   port: 9090
 

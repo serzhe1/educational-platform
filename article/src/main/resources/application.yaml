@@ -5,8 +5,27 @@ server:
 spring:
   security:
     oauth2:
+      client:
+        provider:
+          my-keycloak-provider:
+            issuer-uri: http://localhost:8555/realms/edpl
+            authorization-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/auth
+            token-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/token
+            user-info-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/userinfo
+            jwk-set-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/certs
+            user-name-attribute: preferred_username
+            user-info-authentication-method: header
+        registration:
+          keycloak-spring-gateway-client:
+            provider: my-keycloak-provider
+            client-id: spring-gateway-application
+            client-secret: N4rwld6zCy8Ra9l5Dw0QdjoeQCWYQSyd
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            scope: openid
       resourceserver:
         jwt:
+          issuer-uri: http://localhost:8555/realms/edpl
           jwk-set-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/certs
   datasource:
     url: jdbc:postgresql://localhost:2345/article
@@ -22,6 +41,10 @@ spring:
       matching-strategy: ANT_PATH_MATCHER
   main:
     allow-circular-references: true
+    allow-cors: false
+  servlet:
+    cors:
+      enabled: false
   jpa:
     hibernate:
       ddl-auto: update
@@ -34,6 +57,19 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui
+auth:
+  whitelist:
+    /v2/**
+    /v3/**
+    /swagger-resources/**
+    /swagger-ui/**
+    /
+    /documentation/**
+
+#jwt:
+#  auth:
+#    converter: spring-gateway-application
+#    principal-attribute: preferred_username
 ---
 spring:
   config:

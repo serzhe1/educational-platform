@@ -1,27 +1,36 @@
 package com.edpl.article.web.controller;
 
-import com.edpl.article.model.ArticlesEntity;
-import com.edpl.article.service.ArticleService;
-import com.edpl.article.web.controller.AbstractControllerImpl;
+import com.edpl.article.service.ArticleEntityService;
+import com.edpl.article.web.dto.ArticleDTO;
+import com.edpl.article.web.dto.ArticleInfoDTO;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * @author ogbozoyan
- * @date 07.05.2023
- */
+import javax.annotation.security.RolesAllowed;
+import java.security.Principal;
+import java.util.List;
+
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Slf4j
-@RequestMapping("/article")
+@RequestMapping("/articles")
 @Tag(name = "article-controller", description = "User")
-public class ArticleController extends AbstractControllerImpl<ArticlesEntity, ArticleService> {
-    private final ArticleService service;
-    public ArticleController(ArticleService service, ArticleService service1) {
-        super(service);
-        this.service = service1;
+@RequiredArgsConstructor
+public class ArticleController {
+    private final ArticleEntityService service;
+
+    @PostMapping
+    public ArticleDTO save(ArticleDTO request, Principal principal) {
+        return service.save(request);
     }
+
+    @GetMapping
+    public List<ArticleInfoDTO> getAllInfo() {
+        return service.getAllInfo();
+    }
+//    @Operation(summary = "Удалить сущность по id", security = @SecurityRequirement(name = "bearerAuth"))
+//    @ResponseStatus(HttpStatus.OK)
+//    @DeleteMapping("{id}")
+//    @RolesAllowed({"user"})
 }
