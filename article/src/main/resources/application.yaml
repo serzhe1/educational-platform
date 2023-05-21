@@ -77,4 +77,5 @@ spring:
       on-profile: deb
 logging:
   level:
+    org.springframework.security.oauth2.provider.token: DEBUG
     root: DEBUG

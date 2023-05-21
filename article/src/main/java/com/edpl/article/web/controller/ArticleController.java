@@ -3,6 +3,7 @@ package com.edpl.article.web.controller;
 import com.edpl.article.service.ArticleEntityService;
 import com.edpl.article.web.dto.ArticleDTO;
 import com.edpl.article.web.dto.ArticleInfoDTO;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequestMapping("/articles")
 @Tag(name = "article-controller", description = "User")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key")
 public class ArticleController {
     private final ArticleEntityService service;
 
