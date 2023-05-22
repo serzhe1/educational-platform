@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfiguration {
     @Bean(name = "patchingMapper")
-    ModelMapper patchingModelMapper() {
+    public ModelMapper patchingModelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
                 .setAmbiguityIgnored(true)
@@ -26,7 +26,7 @@ public class AppConfiguration {
     }
 
     @Bean(name = "objectWritter")
-    ObjectWriter objectWriter() {
+    public ObjectWriter objectWriter() {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         return mapper.writer().withDefaultPrettyPrinter();
     }

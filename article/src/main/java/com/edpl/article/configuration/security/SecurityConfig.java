@@ -13,6 +13,10 @@ import org.springframework.security.config.annotation.web.configurers.oauth2.ser
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
+    private final String[] WHITE_LIST = {
+            "/articles",
+            "/articles/{id}"
+    };
 
     @Bean
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
@@ -22,10 +26,11 @@ class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers(WHITE_LIST)
+                .permitAll()
                 .anyRequest()
-                .authenticated()
-                .and()
-                .oauth2Login();
+                .authenticated();
+        http.oauth2Login();
 
         http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();

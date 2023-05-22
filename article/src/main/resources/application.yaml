@@ -54,22 +54,13 @@ spring:
       hibernate:
         jdbc:
           time_zone: UTC
-springdoc:
-  swagger-ui:
-    path: /swagger-ui
 auth:
   whitelist:
     /v2/**
     /v3/**
     /swagger-resources/**
     /swagger-ui/**
-    /
     /documentation/**
-
-#jwt:
-#  auth:
-#    converter: spring-gateway-application
-#    principal-attribute: preferred_username
 ---
 spring:
   config:

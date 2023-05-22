@@ -3,6 +3,8 @@ package com.edpl.article.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name = "articles", schema = "public")
@@ -19,6 +21,10 @@ public class ArticlesEntity {
     @Basic
     @Column(name = "content")
     private String content;
+
+    @OneToMany
+    @JoinColumn(name = "article_id")
+    private Set<CommentEntity> comments;
 
     @Basic
     @Column

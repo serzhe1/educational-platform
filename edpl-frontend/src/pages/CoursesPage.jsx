@@ -14,7 +14,7 @@ const CoursesPage = () => {
     const [coursesList,setCoursesList] = useState([]);
 
     useLayoutEffect(()=>{
-       api.get('/courses')
+       api.get()
        .then((result)=>{setCoursesList(result.data)})
        .catch(err=>console.log(err))
     },[])

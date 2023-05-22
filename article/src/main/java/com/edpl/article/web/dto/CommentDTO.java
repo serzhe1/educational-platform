@@ -4,17 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
-import java.util.Set;
+import java.sql.Timestamp;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ArticleDTO {
+public class CommentDTO {
     private Long id;
-    private String name;
-    private String description;
-    private String content;
-    private Set<CommentDTO> comments;
-
+    private String text;
+    private Timestamp time;
     @JsonIgnore
-    private String ownerUuid;
+    private String userUuid;
+    private Long articleId;
 }
