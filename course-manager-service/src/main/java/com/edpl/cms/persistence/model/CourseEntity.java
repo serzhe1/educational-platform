@@ -11,7 +11,6 @@ import java.util.Set;
 @Table(name = "courses")
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class CourseEntity extends AbstractEntity<Long> {
     @Column(name = "name")
     private String name;
@@ -28,8 +27,8 @@ public class CourseEntity extends AbstractEntity<Long> {
     @Column(name = "competencies")
     private String competencies;
 
-    @Column(name = "owner_id")
-    private Long ownerId;
+    @Column(name = "owner_uuid")
+    private String ownerUUID;
 
     @OneToMany
     @JoinColumn(name = "course_id")

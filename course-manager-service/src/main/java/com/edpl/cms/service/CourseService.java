@@ -7,6 +7,8 @@ import com.edpl.cms.web.dto.CourseInfoDto;
 import com.edpl.cms.web.exhandler.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +43,8 @@ public class CourseService {
     public CourseDto save(CourseDto courseDto) {
         CourseEntity toSave = modelMapper.map(courseDto, CourseEntity.class);
 
+        toSave.setOwnerUUID(getAuth().getName());
+
         CourseEntity course = courseRepository.save(toSave);
 
         courseDto.setId(course.getId());
@@ -50,7 +54,7 @@ public class CourseService {
 
     @Transactional
     public CourseDto update(CourseDto courseDto) {
-        CourseEntity course = courseRepository.findById(courseDto.getId())
+        CourseEntity course = courseRepository.findByIdAndOwnerUUID(courseDto.getId(), getAuth().getName())
                 .orElseThrow(() -> new ResourceNotFoundException(
                         String.format("Course with id=%d not found", courseDto.getId())));
 
@@ -67,7 +71,17 @@ public class CourseService {
 
     @Transactional
     public void deleteById(Long id) {
-        courseRepository.deleteById(id);
+        CourseEntity course = courseRepository.findByIdAndOwnerUUID(id, getAuth().getName())
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        String.format("Course with id=%d not found", id)));
+        courseRepository.delete(course);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CourseInfoDto> getAllMyCourses() {
+        return courseRepository.findAllByOwnerUUID(getAuth().getName()).stream()
+                .map(c -> modelMapper.map(c, CourseInfoDto.class))
+                .toList();
     }
 
     @Transactional(readOnly = true)
@@ -78,5 +92,9 @@ public class CourseService {
                 .map(courseEntity -> modelMapper.map(courseEntity, CourseDto.class))
                 .map(c -> modelMapper.map(c, CourseInfoDto.class))
                 .toList();
+    }
+
+    private Authentication getAuth() {
+        return  SecurityContextHolder.getContext().getAuthentication();
     }
 }

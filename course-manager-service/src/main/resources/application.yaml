@@ -1,10 +1,18 @@
 server:
   port: 8090
+  servlet:
+    context-path: /course-service
   main:
     allow-circular-references: true
   application:
     name: course-manager
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8555/realms/edpl
+          jwk-set-uri: http://localhost:8555/realms/edpl/protocol/openid-connect/certs
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:2345/postgres
@@ -16,11 +24,3 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui
-
-keycloak:
-  auth-server-url: http://localhost:8555
-  realm: edpl
-  resource: courseService
-  public-client: true
-  sslRequired: external
-  useResourceRoleMappings: true

@@ -1,39 +1,10 @@
-drop table if exists user_roles;
 drop table if exists user_courses;
 drop table if exists student_answers;
-drop table if exists roles;
 drop table if exists test_answers;
 drop table if exists tests;
-drop table if exists courses;
-drop table if exists users;
-drop table if exists modules;
 drop table if exists lectures;
-
-create table users
-(
-    id        serial primary key,
-    username  varchar,
-    full_name varchar
-);
-
-create table roles
-(
-    id   serial primary key,
-    role varchar
-);
-
-create table user_roles
-(
-    user_id bigint,
-    role_id bigint,
-    primary key (user_id, role_id),
-    constraint user_fk
-        foreign key (user_id)
-            references users (id) on delete cascade,
-    constraint role_fk
-        foreign key (role_id)
-            references roles (id) on delete cascade
-);
+drop table if exists modules;
+drop table if exists courses;
 
 create table courses
 (
@@ -43,20 +14,14 @@ create table courses
     format       varchar,
     requirements varchar,
     competencies varchar,
-    owner_id     bigint,
-    constraint user_fk
-        foreign key (owner_id)
-            references users (id) on delete cascade
+    owner_uuid varchar
 );
 
 create table user_courses
 (
-    user_id   bigint,
+    user_uuid   varchar,
     course_id bigint,
-    primary key (user_id, course_id),
-    constraint user_fk
-        foreign key (user_id)
-            references users (id) on delete cascade,
+    primary key (user_uuid, course_id),
     constraint course_fk
         foreign key (course_id)
             references courses (id) on delete cascade
@@ -97,12 +62,8 @@ create table test_answers
 
 create table student_answers
 (
-    student_id bigint,
+    student_uuid bigint,
     answer_id  bigint,
-    primary key (student_id, answer_id),
-    constraint student_fk
-        foreign key (student_id)
-            references users (id) on delete cascade,
     constraint answer_fk
         foreign key (answer_id)
             references test_answers (id) on delete cascade

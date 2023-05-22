@@ -19,38 +19,38 @@ import java.util.Set;
 public class StudentController {
     private final StudentService studentService;
 
-    @GetMapping("/courses/{courseId}/sign-up")
-    public ResponseEntity<?> signUpForCourse(@PathVariable Long courseId) {
-        return ResponseEntity.ok(studentService.signUpForCourse(courseId));
-    }
-
-    @GetMapping("/courses/{courseId}/sign-out")
-    public ResponseEntity<?> singOutForCourse(@PathVariable Long courseId) {
-        return ResponseEntity.ok(studentService.signOutForCourse(courseId));
-    }
-
-    @GetMapping("/courses")
-    public ResponseEntity<?> getAllStudentCourses() {
-        return ResponseEntity.ok(studentService.getAllUserCourses());
-    }
-
-    @GetMapping("/courses/{courseId}")
-    public ResponseEntity<?> getCourseById(@PathVariable Long courseId) {
-        return ResponseEntity.ok(studentService.getCourseById(courseId));
-    }
-
-    @GetMapping("/courses/modules/lectures/{lectureId}")
-    public ResponseEntity<?> getLectureById(@PathVariable Long lectureId) {
-        return ResponseEntity.ok(studentService.getLectureById(lectureId));
-    }
-
-    @GetMapping("/courses/modules/{moduleId}/tests")
-    public ResponseEntity<?> getAllTestsByModules(@PathVariable Long moduleId) {
-        return ResponseEntity.ok(studentService.getAllTestByModuleId(moduleId));
-    }
-
-    @PostMapping("courses/modules/tests")
-    public ResponseEntity<?> setAnswerTest(@RequestBody AnswerRequest request) {
-        return ResponseEntity.ok(studentService.setAnswerTest(request));
-    }
+//    @GetMapping("/courses/{courseId}/sign-up")
+//    public ResponseEntity<?> signUpForCourse(@PathVariable Long courseId) {
+//        return ResponseEntity.ok(studentService.signUpForCourse(courseId));
+//    }
+//
+//    @GetMapping("/courses/{courseId}/sign-out")
+//    public ResponseEntity<?> singOutForCourse(@PathVariable Long courseId) {
+//        return ResponseEntity.ok(studentService.signOutForCourse(courseId));
+//    }
+//
+//    @GetMapping("/courses")
+//    public ResponseEntity<?> getAllStudentCourses() {
+//        return ResponseEntity.ok(studentService.getAllUserCourses());
+//    }
+//
+//    @GetMapping("/courses/{courseId}")
+//    public ResponseEntity<?> getCourseById(@PathVariable Long courseId) {
+//        return ResponseEntity.ok(studentService.getCourseById(courseId));
+//    }
+//
+//    @GetMapping("/courses/modules/lectures/{lectureId}")
+//    public ResponseEntity<?> getLectureById(@PathVariable Long lectureId) {
+//        return ResponseEntity.ok(studentService.getLectureById(lectureId));
+//    }
+//
+//    @GetMapping("/courses/modules/{moduleId}/tests")
+//    public ResponseEntity<?> getAllTestsByModules(@PathVariable Long moduleId) {
+//        return ResponseEntity.ok(studentService.getAllTestByModuleId(moduleId));
+//    }
+//
+//    @PostMapping("courses/modules/tests")
+//    public ResponseEntity<?> setAnswerTest(@RequestBody AnswerRequest request) {
+//        return ResponseEntity.ok(studentService.setAnswerTest(request));
+//    }
 }
