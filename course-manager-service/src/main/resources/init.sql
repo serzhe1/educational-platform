@@ -19,9 +19,9 @@ create table courses
 
 create table user_courses
 (
+    id serial primary key ,
     user_uuid   varchar,
     course_id bigint,
-    primary key (user_uuid, course_id),
     constraint course_fk
         foreign key (course_id)
             references courses (id) on delete cascade

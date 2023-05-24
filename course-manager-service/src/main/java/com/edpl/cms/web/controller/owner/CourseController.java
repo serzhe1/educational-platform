@@ -1,4 +1,4 @@
-package com.edpl.cms.web.controller;
+package com.edpl.cms.web.controller.owner;
 
 import com.edpl.cms.service.CourseService;
 import com.edpl.cms.web.dto.CourseDto;

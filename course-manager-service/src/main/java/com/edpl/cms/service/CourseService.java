@@ -39,6 +39,12 @@ public class CourseService {
         return modelMapper.map(ce, CourseDto.class);
     }
 
+    @Transactional(readOnly = true)
+    public List<CourseInfoDto> findAllByIdIn(List<Long> id) {
+        List<CourseEntity> courses = courseRepository.findAllIdIn(id);
+        return courses.stream().map(ce -> modelMapper.map(ce, CourseInfoDto.class)).toList();
+    }
+
     @Transactional
     public CourseDto save(CourseDto courseDto) {
         CourseEntity toSave = modelMapper.map(courseDto, CourseEntity.class);

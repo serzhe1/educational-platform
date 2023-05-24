@@ -13,6 +13,13 @@ import java.util.Optional;
 public interface CourseRepository extends JpaRepository<CourseEntity, Long> {
     List<CourseEntity> findAllByNameContaining(String namePattern);
 
+    @Query("""
+            SELECT course
+            FROM CourseEntity course
+            WHERE course.id in :id
+            """)
+    List<CourseEntity> findAllIdIn(Collection<Long> id);
+
     @Query(value = """
             SELECT course
             FROM CourseEntity course

@@ -1,18 +1,23 @@
 package com.edpl.cms.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TestAnswerDto {
     private Long id;
     private String answer;
-    @JsonIgnore
     private boolean isRight;
+
+    public boolean getRight() {
+        return this.isRight;
+    }
 }

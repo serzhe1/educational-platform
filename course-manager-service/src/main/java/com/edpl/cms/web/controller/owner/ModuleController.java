@@ -1,4 +1,4 @@
-package com.edpl.cms.web.controller;
+package com.edpl.cms.web.controller.owner;
 
 import com.edpl.cms.service.ModuleService;
 import com.edpl.cms.web.dto.ModuleDto;
